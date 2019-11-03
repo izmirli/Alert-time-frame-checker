@@ -152,6 +152,8 @@ class TestAlertTimeFrameChecker(unittest.TestCase):
         """
         test_now = datetime.datetime.now()
         cur_day_of_week = test_now.isoweekday()
+        if cur_day_of_week == 7:  # Normalize Sunday
+            cur_day_of_week = 0
 
         # Within time-frames test
         time_frames_string = WEEK_DAYS[cur_day_of_week] + '@00:00-23:59'
